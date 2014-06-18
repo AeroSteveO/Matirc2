@@ -50,14 +50,5 @@ THIS SOFTWARE IS RELEASED UNDER THE WTFPL license
     
 sincerely,
 
-xixor
-Feb. 13, 2012
-
-MATIRC 0.1
-
-website: <http://matirc.xixor.net>
-email: <xixor@xixor.net>
-
-MatIRC 0.5 by AeroSteveO
-
-
+AeroSteveO
+6-18-14
