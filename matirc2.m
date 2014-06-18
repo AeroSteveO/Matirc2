@@ -14,6 +14,8 @@ function matirc2()
 %
 % Coming Soon:
 % /notice
+% /kick
+%
 %
 % REQUIREMENTS:
 %  * TCP/UDP/IP Toolbox from:
@@ -29,10 +31,9 @@ function matirc2()
 % AeroSteveO
 % Sept. 21, 2013
 % MATIRC 0.5
+% website: N/A
+% email:
 %
-% irc commands: http://www.technerd.net/irc-commands.html
-%               http://emptv.com/irc-ref
-% 
 
 %% OPTIONS
 global opt
@@ -94,6 +95,10 @@ while 1
         send_action(user_msg,con);
         continue;
     end
+    if numel(user_msg) >=7 && strcmp(user_msg(1:7),'/notice')
+        send_notice(user_msg,con);
+        continue;
+    end
     switch user_msg
         case '/quit'
             break;
@@ -117,7 +122,13 @@ send_msg = ['PRIVMSG ' nick ' :' msg '\r\n'];
 pnet(con,'printf',send_msg);
 fprintf('\n    --> %s : %s\n', nick, msg);
 
-function send_notice(msg,con,nick)
+function send_notice(msg,con)
+
+[~,msg] = strtok(msg,' ');
+[nick,msg] = strtok(msg,' ');
+msg = strtrim(deblank(msg));
+nick = strtrim(deblank(nick));
+
 msg = strtrim(deblank(msg));
 nick = strtrim(deblank(nick));
 send_msg = ['NOTICE ' nick ' :' msg '\r\n'];
