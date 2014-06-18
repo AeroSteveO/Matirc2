@@ -57,4 +57,7 @@ MATIRC 0.1
 website: <http://matirc.xixor.net>
 email: <xixor@xixor.net>
 
+MatIRC 0.5
+AeroSteveO
+
 
