@@ -45,8 +45,9 @@ opt.username   = 'matirc';
 opt.hostname   = 'www.xixor.net';
 opt.servername = 'irc.url.com';
 opt.realname   = 'Matrix Laboratory';
+opt.passwd='password'; %nickserv password
+
 timer_period   = 0.1;
-passwd='password'; %nickserv password
 
 %% CONNECT
 con=pnet('tcpconnect',host,port);
@@ -77,7 +78,7 @@ register(con,opt);
 msg_text = opt.channel;
 
 pnet(con,'printf',[ 'MODE ' opt.nick ' +B \r\n']);
-send_priv_msg(['/msg nickserv ghost ' opt.nick ' ' passwd],con);
+send_priv_msg(['/msg nickserv ghost ' opt.nick ' ' opt.passwd],con);
 send_priv_msg(['/msg nickserv identify ' passwd],con);
 
 %pnet(con,'printf',['PRIVMSG ' opt.channel ' :' 'You hate MATLAB, I run MATLAB \r\n']);
